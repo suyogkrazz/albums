@@ -11,6 +11,7 @@ const {
     View,
     Image, Linking,
     StyleSheet,
+    ActivityIndicator,
 } = ReactNative;
 
 
@@ -22,7 +23,6 @@ class Album extends Component {
     albums() {
         return Object.keys(this.props.fetchedAlbums).map(key => this.props.fetchedAlbums[key])
     }
-
     componentDidMount() {
         this.setState({ loading: true })
         this.props.fetchAlbums().then( (res) => {
@@ -62,10 +62,23 @@ class Album extends Component {
                             </Card>
 
                     })}
-                    {this.state.loading ? <Text> Searching...</Text> : null }
+                    {this.state.loading ?  <View style={{flex: 1}}>
+                                                <ActivityIndicator style={styles.centered} />
+                                           </View>
+                        : null }
                 </ScrollView>
             </View>
         )
+    }
+
+    handleClick(url) {
+        Linking.canOpenURL(url).then(supported => {
+            if (supported) {
+                Linking.openURL(url);
+            } else {
+                console.log('Don\'t know how to open URI: ' + this.props.url);
+            }
+        });
     }
 }
 const styles = StyleSheet.create({
