@@ -1,6 +1,20 @@
 import * as types from './types'
-export function fetchAlbum() {
+
+import musicList from '../services/musicListService'
+
+export function fetchAlbums() {
     return (dispatch, getState) => {
-        return true;
+        return musicList().then(resp => {
+            dispatch(setAlbums({albums: resp}));
+        }).catch( (ex) => {
+            console.log(ex);
+        });
     }
+}
+export function setAlbums({ albums }) {
+    return {
+        type: types.SET_ALBUMS,
+        albums,
+    }
+
 }
