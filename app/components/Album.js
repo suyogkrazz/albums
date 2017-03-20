@@ -14,7 +14,11 @@ const {
     ActivityIndicator,
 } = ReactNative;
 
-
+const AlbumBar= (props)=>{
+    return <View style={styles.searchSection}>
+                <Text >{props.text}</Text>
+           </View>
+}
 class Album extends Component {
     constructor(props) {
         super(props)
@@ -33,9 +37,7 @@ class Album extends Component {
     render() {
         return (
             <View style={styles.scene}>
-                <View style={styles.searchSection}>
-                    <Text >Albums</Text>
-                </View>
+                <AlbumBar text="Albums"/>
                 <ScrollView style={styles.scrollSection} >
                     {!this.state.loading && this.albums().map((album) => {
                         return <Card key={album.id}>
