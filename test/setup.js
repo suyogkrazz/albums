@@ -1,3 +1,5 @@
+
+import AsyncStorage from './AsyncStorage'
 jest.mock('Linking', () => {
   return {
     addEventListener: jest.fn(),
@@ -7,3 +9,4 @@ jest.mock('Linking', () => {
     getInitialURL: jest.fn(),
   }
 })
+jest.setMock('AsyncStorage', AsyncStorage)

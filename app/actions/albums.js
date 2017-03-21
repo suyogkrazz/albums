@@ -11,6 +11,7 @@ export function fetchAlbums() {
         });
     }
 }
+
 export function setAlbums({ albums }) {
     return {
         type: types.SET_ALBUMS,

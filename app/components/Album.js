@@ -20,6 +20,8 @@ const AlbumBar= (props)=>{
                 <Text >{props.text}</Text>
            </View>
 }
+
+
  export class Album extends Component {
     constructor(props) {
         super(props)
