@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Should Render Correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+      "marginTop": 10,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "borderBottomColor": "#646464",
+        "borderBottomWidth": 1,
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "center",
+        "padding": 5,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Object {
+          "color": "#000",
+          "fontFamily": "System",
+          "fontSize": 16,
+        }
+      }
+      virtual={undefined}
+    >
+      Albums
+    </Text>
+  </View>
+  <RCTScrollView
+    style={
+      Object {
+        "flex": 0.8,
+      }
+    }
+  >
+    <View>
+      <View
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <ActivityIndicator
+          animating={true}
+          color="#999999"
+          hidesWhenStopped={true}
+          size="small"
+          style={undefined}
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+</View>
+`;

@@ -22,6 +22,12 @@
 		"react-test-renderer": "~15.4.1"
 	},
 	"jest": {
-		"preset": "react-native"
+		 "preset": "react-native",
+		 "setupFiles": [
+            "./test/setup.js"
+         ],
+		 "transformIgnorePatterns": [
+		      "node_modules/(?!react-native|@shoutem/theme|@shoutem/animation|@shoutem/ui)"
+		  ]
 	}
 }

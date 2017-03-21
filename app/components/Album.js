@@ -19,7 +19,7 @@ const AlbumBar= (props)=>{
                 <Text >{props.text}</Text>
            </View>
 }
-class Album extends Component {
+ export class Album extends Component {
     constructor(props) {
         super(props)
         this.state = { loading: false}
