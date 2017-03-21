@@ -3,11 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import { ActionCreators } from '../actions'
 
-import {
-  StyleSheet,
-  View,
-  TouchableHighlight, Text,
-} from 'react-native';
+import Album from '../components/Album';
 
 class AppContainer extends Component {
 
@@ -16,11 +12,7 @@ class AppContainer extends Component {
   }
   render() {
    return (
-       <View>
-         <Text>
-          test loremasdjbaskdbasdhb
-        </Text>
-       </View>
+       <Album {...this.props}/>
     );
   }
 }
@@ -31,6 +23,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
+      //Naviagtion States For Future
   };
 }
 
