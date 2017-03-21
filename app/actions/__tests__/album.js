@@ -11,3 +11,4 @@ describe('actions', () => {
     expect(actions.setAlbums({albums:albums})).toEqual(expectedAction)
   })
 })
+

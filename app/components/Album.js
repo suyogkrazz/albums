@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import ReactNative from 'react-native';
 import { Card, CardItem, Left, Body ,Thumbnail, Text, Button,Content} from 'native-base';
 
+import * as snapshotUtil from '../lib/Storage';
 const {
     ScrollView,
     View,
@@ -15,7 +16,7 @@ const {
 } = ReactNative;
 
 const AlbumBar= (props)=>{
-    return <View style={styles.searchSection}>
+    return <View style={styles.albumBar}>
                 <Text >{props.text}</Text>
            </View>
 }
@@ -29,10 +30,23 @@ const AlbumBar= (props)=>{
     }
     componentDidMount() {
         this.setState({ loading: true })
-        this.props.fetchAlbums().then( (res) => {
-            this.setState({loading: false })
-        });
+        snapshotUtil.rehydrate()
+            .then(snapshot => {
+                if(!snapshot){
+                    this.fetchdata();
+                }else{
+                    this.props.setAlbumState(snapshot)
+                    this.setState({loading: false })
+                }
+            });
+
     }
+     fetchdata() {
+         this.props.fetchAlbums().then( (res) => {
+             snapshotUtil.persist(this.props.fetchedAlbums)
+             this.setState({loading: false })
+         });
+     }
 
     render() {
         return (
@@ -40,7 +54,8 @@ const AlbumBar= (props)=>{
                 <AlbumBar text="Albums"/>
                 <ScrollView style={styles.scrollSection} >
                     {!this.state.loading && this.albums().map((album) => {
-                        return <Card key={album.id}>
+
+                        return <Card key={album.id} >
                                     <CardItem>
                                         <Left>
                                             <Thumbnail square source={{ uri:album.thumbnail_image}} />
@@ -82,13 +97,14 @@ const AlbumBar= (props)=>{
             }
         });
     }
-}
+
+ }
 const styles = StyleSheet.create({
     scene: {
         flex: 1,
         marginTop: 10
     },
-    searchSection: {
+    albumBar: {
         height: 50,
         flexDirection: 'row',
         borderBottomColor: '#646464',
@@ -97,21 +113,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     scrollSection: {
-        flex: 0.8
-    },
-    searchButton: {
-        flex: 0.3,
+        flex: 0.8,
+        padding:5
     },
     titleText:{
         fontSize: 21,
         marginTop: 0,
         textAlign: 'center',
-    },
-    searchInput: {
-        flex: 0.7,
-        backgroundColor:'#DAF'
-
-    },
+    }
 });
 
 function mapStateToProps(state) {

@@ -41,6 +41,7 @@ exports[`Component Should Render Correctly 1`] = `
     style={
       Object {
         "flex": 0.8,
+        "padding": 5,
       }
     }
   >

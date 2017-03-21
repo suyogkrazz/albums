@@ -22,6 +22,8 @@ function configureStore(initialState) {
 
 const store = configureStore({});
 
+
+//Main App Component
 const App = () => (
   <Provider store={store}>
       <AppContainer/>

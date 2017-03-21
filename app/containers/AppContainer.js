@@ -23,6 +23,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
+      //Naviagtion States For Future
   };
 }
 

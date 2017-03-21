@@ -18,3 +18,10 @@ export function setAlbums({ albums }) {
     }
 
 }
+
+export function setAlbumState(state) {
+    return {
+        type: types.SET_ALBUMS_STATE,
+        state,
+    }
+}
